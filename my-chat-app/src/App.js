@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Messages from './Components/Messages';
 import React, { useState } from "react";
+import Input from './Components/Input';
 
 
 function App() {
@@ -161,10 +162,20 @@ function App() {
     username: randomName(),
     color: randomColor()
   });
+
+  const onSendMessage = (message) => {
+    const updatedMessages = [...messages, {text: message, member: member}];
+    setMessages(updatedMessages);
+  }
+  
   
   return (
     <div className="App">
+      <div className="App-header">
+        <h1>My Chat App</h1>
+      </div>
       <Messages messages={messages} currentMember={member} />
+      <Input onSendMessage={onSendMessage}/>
     </div>
   );
 };
