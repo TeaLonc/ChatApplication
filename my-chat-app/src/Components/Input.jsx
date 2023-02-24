@@ -4,15 +4,16 @@ function Input(props) {
     const [text, setText] = useState("");
     
     const onSubmit = (e) => {
-    e.preventDefault();
-    props.onSendMessage(text);
-    setText("");
-    };
+      e.preventDefault();
+      props.onSendMessage(text);
+      setText("");    
+      };    
     
     const onChange = (e) => {
-    setText(e.target.value);
+      setText(e.target.value);
     };
-    
+
+       
     return (
     <div className="Input">
     <form onSubmit={onSubmit}>

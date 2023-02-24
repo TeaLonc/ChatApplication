@@ -1,12 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
 import Messages from './Components/Messages';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Input from './Components/Input';
 
 
 function App() {
 
+  const onSendMessage = (message) => {    
+    drone.publish({
+      room: "observable-room",
+      message
+    })    
+  }
   const randomName = () => {
     const adjectives = [
       "autumn",
@@ -148,27 +153,63 @@ function App() {
   const randomColor = () => {
     return "#" + Math.floor(Math.random() * 0xffffff).toString(16);
   };
+
   const [messages, setMessages] = useState([
-    {
-      text: "This is a test message!",
-      member: {
-        color: "blue",
-        username: "bluemoon"
-      }
-    }
+    
   ]);
+
+  const [drone, setDrone] = useState(null);
 
   const [member, setMember] = useState({
     username: randomName(),
-    color: randomColor()
+    color: randomColor(),
   });
+  useEffect(() => {
+    console.log(messages)
+  }, [messages])
+    
+  useEffect(() => {        
+    const newDrone = new window.Scaledrone("sCQTtqgc9lORXtLw", {
+      data: member,
+    });    
+    
+    setDrone(newDrone);         
+    
+    return () => {
+      
+    };
+  }, []);
 
-  const onSendMessage = (message) => {
-    const updatedMessages = [...messages, {text: message, member: member}];
-    setMessages(updatedMessages);
-  }
-  
-  
+  useEffect(() => {    
+    if(drone) {
+      const room = drone.subscribe("observable-room");
+      
+      drone.on("open", (error) => {
+        if (error) {
+          console.error(error);
+        } else {        
+          const updatedMember = {...member, id: drone.clientId };          
+          setMember(updatedMember);          
+        }
+      });
+      
+      /*room.on("data", (message, member) => { 
+                                          
+        setMessages(oldArray => [ ...oldArray, {text: message, member: member}])
+      
+    });*/
+    room.on("data", (message, member) => { 
+                                          
+      setMessages(oldArray => [ ...oldArray, {text: message, member: member}])
+    
+  });
+    return () => {
+      drone.close();
+    };
+
+    }        
+  }, [drone]);
+
   return (
     <div className="App">
       <div className="App-header">

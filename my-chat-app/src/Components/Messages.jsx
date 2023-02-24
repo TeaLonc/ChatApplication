@@ -2,6 +2,7 @@ import React from "react";
 
 
 function Messages({ messages, currentMember }) {
+      
 
         const renderMessage = (message, currentMember) => {
           const { member, text } = message;
@@ -13,10 +14,10 @@ function Messages({ messages, currentMember }) {
             <li className={className}>
               <span
                 className="avatar"
-                style={{ backgroundColor: member.color }}
+                style={{ backgroundColor: member.clientData.color }}
               />
               <div className="Message-content">
-                <div className="username">{member.username}</div>
+                <div className="username">{member.clientData.username}</div>
                 <div className="text">{text}</div>
               </div>
             </li>
