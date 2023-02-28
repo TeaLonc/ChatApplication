@@ -2,6 +2,12 @@ import './App.css';
 import Messages from './Components/Messages';
 import React, { useState, useEffect } from "react";
 import Input from './Components/Input';
+import Header from './Components/Header';
+import Landing from './Components/Landing';
+
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import ChatRoom from './Components/ChatRoom';
+
 
 
 function App() {
@@ -209,13 +215,16 @@ function App() {
   }, [drone]);
 
   return (
-    <div className="App">
-      <div className="App-header">
-        <h1>My Chat App</h1>
+    <Router>
+        <div className="App">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Landing />}></Route>
+          <Route path="/ChatRoom" element={<ChatRoom messages={messages} currentMember={member} onSendMessage={onSendMessage}/>}></Route>          
+        </Routes>        
       </div>
-      <Messages messages={messages} currentMember={member} />
-      <Input onSendMessage={onSendMessage}/>
-    </div>
+    </Router>
+    
   );
 };
 
