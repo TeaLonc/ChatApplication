@@ -204,8 +204,8 @@ function ChatRoom (props) {
 
     return (
         <>
-            <Messages messages={/*props.*/messages} currentMember={/*props.currentMember*/member} />
-            <Input onSendMessage={/*props.*/onSendMessage}/>
+            <Messages messages={messages} currentMember={member} />
+            <Input onSendMessage={onSendMessage}/>
         </>
         
     )

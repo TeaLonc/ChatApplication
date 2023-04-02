@@ -1,7 +1,5 @@
 import './App.css';
-import Messages from './Components/Messages';
 import React, { useState, useEffect } from "react";
-import Input from './Components/Input';
 import Header from './Components/Header';
 import Landing from './Components/Landing';
 
@@ -32,7 +30,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Landing member={inputName} avatar={chooseAvatar} currentAvatar={avatarImg}/>}></Route>
-          <Route path="/ChatRoom" element={<ChatRoom /*messages={messages} currentMember={member} onSendMessage={onSendMessage}*/currentMember={member} currentAvatar={avatarImg}/>}></Route>          
+          <Route path="/ChatRoom" element={<ChatRoom currentMember={member} currentAvatar={avatarImg}/>}></Route>          
         </Routes>        
       </div>
     </Router>

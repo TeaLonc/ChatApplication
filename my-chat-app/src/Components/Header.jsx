@@ -4,10 +4,7 @@ function Header () {
     return (
         <header>
             <div className="App-header">
-                <h1>My Chat App</h1>
-                <span className="avatar">               
-                    <img src={hacker} alt="icon avatar"></img>                                      
-                </span>
+                <h1>My Chat App</h1>               
             </div>
             
         </header>
