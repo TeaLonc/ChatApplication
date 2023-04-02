@@ -1,4 +1,7 @@
 import React from "react";
+import avatarImg from "../img/avatar.png";
+import hacker from "../img/hacker.png";
+import ninja from "../img/ninja.png";
 
 
 function Messages({ messages, currentMember }) {
@@ -10,12 +13,13 @@ function Messages({ messages, currentMember }) {
           const className = messageFromMe
             ? "Messages-message currentMember"
             : "Messages-message";
+          const avatarSource = member.clientData.avatarSource;
+          console.log(avatarSource)
           return (
             <li className={className}>
-              <span
-                className="avatar"
-                style={{ backgroundColor: member.clientData.color }}
-              />
+              <span className="avatar" >               
+                 <img src={avatarSource==="avatarImg" ? avatarImg : (avatarSource==="ninja"? ninja : hacker)} alt="icon avatar"></img>                                      
+              </span>
               <div className="Message-content">
                 <div className="username">{member.clientData.username}</div>
                 <div className="text">{text}</div>

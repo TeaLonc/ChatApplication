@@ -1,17 +1,21 @@
 .App {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   height: 100vh;
+  background-color: #474747;
 }
 
 .App-header {
-  background-color: #262626;
+  display: flex;
+  background-color: #474747;
   overflow: visible;
   width: 100%;
   text-align: center;
   color: white;
+  justify-content: center;
 }
+
 
 .Messages-list {
   padding: 20px 0;
@@ -30,7 +34,6 @@
 }
 
 .Messages-message.currentMember {
-  /*justify-content: flex-end;*/
   flex-direction: row-reverse;
   text-align: right;
 }
@@ -43,12 +46,21 @@
   align-items: flex-end;
 }
 
-.Messages-message > .avatar {
+.Messages-message > .avatar img {
   height: 35px;
   width: 35px;
   border-radius: 50%;
   display: inline-block;
   margin: 0 10px -10px;
+}
+
+.App-header > .avatar img {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 10px -10px;
+  justify-self: flex-end;
 }
 
 .Message-content > .username {
@@ -74,7 +86,7 @@
 
 form {
   display: flex;
-  width: 100%;
+  width: 90%;
   justify-content: space-between;
   max-width: 900px;
   margin: 0 auto 40px;
@@ -84,16 +96,50 @@ input {
   padding: 5px;
   font-size: 16px;
   border-radius: 8px;
-  border: 1px solid orangered;
+  border: 1px solid green;
   flex-grow: 1;
+}
+
+.input-landing {
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid green;
+  flex-grow: 1;
+  align-self: auto;
+  
+}
+
+.landing-name {
+  display: flex;
+  width: 40%;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  justify-content: center;  
+  
+}
+
+.landing-choose-avatar {
+  display: flex;  
+  justify-content: center;
+}
+
+.landing-choose-avatar img {
+  width: 100px;
+  height: 100px;
 }
 
 button {
   padding: 5px 10px;
   font-size: 16px;
-  background-color: orangered;
+  background-color: rgb(5, 104, 5);
   color: white;
   border: none;
   border-radius: 8px;
   margin-left: 10px;
+}
+
+button:hover {
+  background-color: rgb(97, 195, 97);
 }
