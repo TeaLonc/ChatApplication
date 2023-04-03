@@ -4,17 +4,15 @@ import hacker from "../img/hacker.png";
 import ninja from "../img/ninja.png";
 
 
-function Messages({ messages, currentMember }) {
-      
+function Messages({ messages, currentMember }) {      
 
-        const renderMessage = (message, currentMember) => {
-          const { member, text } = message;
-          const messageFromMe = member.id === currentMember.id;
-          const className = messageFromMe
-            ? "Messages-message currentMember"
-            : "Messages-message";
-          const avatarSource = member.clientData.avatarSource;
-          console.log(avatarSource)
+  const renderMessage = (message, currentMember) => {
+     const { member, text } = message;
+     const messageFromMe = member.id === currentMember.id;
+     const className = messageFromMe
+        ? "Messages-message currentMember"
+        : "Messages-message";
+     const avatarSource = member.clientData.avatarSource;
           return (
             <li className={className}>
               <span className="avatar" >               

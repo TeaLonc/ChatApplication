@@ -1,14 +1,11 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import avatarImg from "../img/avatar.png";
 import hacker from "../img/hacker.png";
 import ninja from "../img/ninja.png";
 
 const Landing = ({member, avatar, currentAvatar}) => {
-
       return (
-        <>       
-         
+        <>             
             <div class="landing-choose-avatar">
                 <button  id="ninja" onClick={avatar} 
                     style={{backgroundColor: currentAvatar === "ninja" ? "rgb(97, 195, 97)" : "",}}>
